@@ -1,0 +1,6 @@
+{
+  "api_url": "http://localhost/api/highlights",
+  "api_key": "abv",
+  "auth_header": "Authorization",
+  "auth_prefix": "Bearer "
+}

@@ -1,0 +1,16 @@
+{
+  "source": "kindle",
+  "synced_at": "2026-07-13T10:00:00",
+  "count": 3,
+  "highlights": [
+    {
+      "title": "Tên sách",
+      "author": "Tác giả",
+      "type": "Highlight",
+      "location": "1234-1236",
+      "page": null,
+      "added_date": "Sunday, June 1, 2025 10:32:11 AM",
+      "content": "Nội dung highlight..."
+    }
+  ]
+}
