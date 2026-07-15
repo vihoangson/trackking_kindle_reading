@@ -1,0 +1,6 @@
+{
+  "api_url": "http://188.166.213.71:8099/api/highlights",
+  "api_key": "abv",
+  "auth_header": "Authorization",
+  "auth_prefix": "Bearer "
+}

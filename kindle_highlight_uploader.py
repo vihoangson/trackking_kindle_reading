@@ -32,8 +32,18 @@ try:
 except ImportError:
     requests = None  # sẽ báo lỗi rõ ràng khi bấm nút upload nếu chưa cài
 
-CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.json")
 CLIPPINGS_RELATIVE_PATH = os.path.join("documents", "My Clippings.txt")
+
+def get_config_path():
+    """Tìm config.json: ưu tiên thư mục hiện tại trước (cho EXE có thể đọc config bên ngoài)."""
+    candidates = [
+        os.path.join(os.getcwd(), "config.json"),  # Thư mục chạy EXE
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.json"),  # Cùng thư mục script
+    ]
+    for path in candidates:
+        if os.path.isfile(path):
+            return path
+    return candidates[0]  # Nếu không tìm thấy, trả về thư mục hiện tại
 
 
 # ---------------------------------------------------------------------------
@@ -172,9 +182,10 @@ def parse_clippings(file_path):
 # 3. Upload lên API
 # ---------------------------------------------------------------------------
 def load_config():
-    if not os.path.isfile(CONFIG_PATH):
-        raise FileNotFoundError(f"Không tìm thấy file cấu hình: {CONFIG_PATH}")
-    with open(CONFIG_PATH, "r", encoding="utf-8") as f:
+    config_path = get_config_path()
+    if not os.path.isfile(config_path):
+        raise FileNotFoundError(f"Không tìm thấy file cấu hình: {config_path}")
+    with open(config_path, "r", encoding="utf-8") as f:
         return json.load(f)
 
 
